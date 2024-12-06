@@ -51,7 +51,11 @@ const SignIn = () => {
               Email <span className='text-red-400'>&#42;</span>
             </span>
           </div>
-          <input type='text' className='input input-bordered w-full max-w-xs' />
+          <input
+            type='text'
+            className='input input-bordered w-full max-w-xs'
+            name='email'
+          />
         </label>
         <label className='form-control w-full max-w-xs'>
           <div className='label'>
@@ -62,6 +66,7 @@ const SignIn = () => {
           <input
             type='password'
             className='input input-bordered w-full max-w-xs'
+            name='password'
           />
         </label>
         <button className='btn btn-primary w-full'>Sign In</button>
