@@ -11,6 +11,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import EventDetails from './pages/EventDetails';
 import Error from './components/Error';
+import { UserProvider } from './context/userContext';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
   )
 );
 
-const App = () => <RouterProvider router={router} />;
+const App = () => (
+  <UserProvider>
+    <RouterProvider router={router} />;
+  </UserProvider>
+);
 
 export default App;

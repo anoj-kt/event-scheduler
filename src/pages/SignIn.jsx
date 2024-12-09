@@ -1,7 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../context/userContext';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const { signIn } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,21 +25,8 @@ const SignIn = () => {
     };
 
     // Post the data
-    fetch('http://localhost:3001/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userCredentials),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          return alert(data.error);
-        }
-        navigate('/'); //Navigate to homepage once signed in
-      })
-      .catch((err) => console.log(err));
+    signIn(userCredentials);
+    navigate('/'); //Navigate to homepage once signed in
   };
 
   return (
