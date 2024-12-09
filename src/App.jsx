@@ -12,13 +12,16 @@ import SignUp from './pages/SignUp';
 import EventDetails from './pages/EventDetails';
 import Error from './components/Error';
 import { UserProvider } from './context/userContext';
+import ProtectedLayout from './layout/ProtectedLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
       <Route index element={<Home />} />
       <Route path='event/:eventID' element={<EventDetails />} />
-      <Route path='create' element={<CreateEvent />} />
+      <Route path='create' element={<ProtectedLayout />}>
+        <Route index element={<CreateEvent />} />
+      </Route>
       <Route path='signin' element={<SignIn />} />
       <Route path='signup' element={<SignUp />} />
       <Route path='/*' element={<Error />} />
