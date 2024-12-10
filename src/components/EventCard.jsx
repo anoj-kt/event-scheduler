@@ -1,10 +1,16 @@
-const EventCard = () => {
+const EventCard = ({ event }) => {
+  const formattedDate = new Date(event.date).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: '2-digit',
+  });
+
   return (
     <div className='card bg-neutral w-full shadow-xl mb-4'>
       <div className='card-body'>
         <h2 className='card-title text-primary'>
-          Event name
-          <div className='badge badge-secondary'>24 Dec 2024</div>
+          {event.title}
+          <div className='badge badge-secondary'>{formattedDate}</div>
         </h2>
         <div className='flex gap-2 my-2'>
           <svg
@@ -14,13 +20,9 @@ const EventCard = () => {
           >
             <path d='M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z' />
           </svg>
-          <span>Sesame Street 10, 10101, Berlin</span>
+          <span>{event.location}</span>
         </div>
-        <p className='truncate'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptas
-          provident adipisci. Aspernatur nihil odit debitis obcaecati officiis
-          quam temporibus!
-        </p>
+        <p className='truncate'>{event.description}</p>
       </div>
     </div>
   );
