@@ -7,6 +7,8 @@ const UserProvider = ({ children }) => {
 
   // Checking if user is signed in when page refreshes
   useEffect(() => {
+    if (!localStorage.getItem('token')) return;
+
     const fetchOptions = {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
